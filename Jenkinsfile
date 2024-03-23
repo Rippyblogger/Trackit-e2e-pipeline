@@ -56,7 +56,7 @@ pipeline{
                         script: "docker ps -aq | xargs docker inspect --format '{{ .NetworkSettings.IPAddress }}' ",  
                         returnStdout: true
                     ).trim()
-                    MONGO_URI  = 'mongodb://$mongoIpAddress:27017'
+                    MONGO_URI  = 'mongodb://"{$mongoIpAddress}":27017'
                     sh "echo '${MONGO_URI}' "
                 }
             }
@@ -64,7 +64,7 @@ pipeline{
 
         stage("Clean Mongo container"){
             steps{
-                echo '${MONGO_URI}' 
+                echo "${MONGO_URI}"
                 sh 'docker stop mongo'
                 sh 'docker rm mongo'
             }
