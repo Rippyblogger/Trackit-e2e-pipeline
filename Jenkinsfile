@@ -64,11 +64,10 @@ pipeline{
             }
         }
 
-        stage("Test Mongo variable"){
+        stage("Clean Mongo container"){
             steps{
-                sh 'echo ${MONGO_URI}'
-
-                
+                sh 'docker stop mongo'
+                sh 'docker rm mongo'
             }
         }
             
