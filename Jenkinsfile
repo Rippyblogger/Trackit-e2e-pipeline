@@ -57,8 +57,6 @@ pipeline{
                         returnStdout: true
                     ).trim()
                     env.MONGO_URI  = 'mongodb://$mongoIpAddress:27017'
-
-                    sh 'echo ${env.MONGO_URI}'
                     sh 'echo ${MONGO_URI}'
                 }
             }
