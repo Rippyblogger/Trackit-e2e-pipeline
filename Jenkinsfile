@@ -79,7 +79,7 @@ pipeline{
                         EOF
                     """
 
-                    sh 'cat .env'
+                    sh 'npm run test'
                 }
             }
         }
