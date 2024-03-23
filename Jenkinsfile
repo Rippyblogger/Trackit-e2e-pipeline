@@ -79,7 +79,7 @@ pipeline{
                         EOF
                     """
 
-                    sh 'echo .env'
+                    sh 'cat .env'
                 }
             }
         }
