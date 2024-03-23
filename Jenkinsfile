@@ -84,7 +84,7 @@ pipeline{
             }
         }
 
-        stage("Seed database Tests"){
+        stage("Run Tests"){
             steps{
                 dir("server"){
                     sh 'npm run test'
