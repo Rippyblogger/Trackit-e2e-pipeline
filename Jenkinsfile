@@ -56,8 +56,8 @@ pipeline{
                         script: "docker ps -aq | xargs docker inspect --format '{{ .NetworkSettings.IPAddress }}' ",  
                         returnStdout: true
                     ).trim()
-                    env.MONGO_URI  = 'mongodb://$mongoIpAddress:27017'
-                    sh 'echo ${MONGO_URI}'
+                    MONGO_URI  = 'mongodb://$mongoIpAddress:27017'
+                    sh "echo '${MONGO_URI}' "
                 }
             }
         }
