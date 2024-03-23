@@ -64,6 +64,7 @@ pipeline{
 
         stage("Clean Mongo container"){
             steps{
+                echo '${MONGO_URI}' 
                 sh 'docker stop mongo'
                 sh 'docker rm mongo'
             }
