@@ -65,7 +65,7 @@ pipeline{
             }
         }
 
-        stage("Run Tests"){
+        stage("Seed database Tests"){
             steps{
                 dir("server"){
                     sh 'touch .env'
@@ -79,6 +79,14 @@ pipeline{
                         EOF
                     """
 
+                    sh 'npm run seed'
+                }
+            }
+        }
+
+        stage("Seed database Tests"){
+            steps{
+                dir("server"){
                     sh 'npm run test'
                 }
             }
