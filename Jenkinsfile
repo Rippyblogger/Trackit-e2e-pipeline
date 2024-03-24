@@ -74,7 +74,7 @@ pipeline{
                         def content=  """\
                         MONGO_DB_CONNECTION="${MONGO_DB_CONNECTION}"
                         SECRET_KEY="${SECRET_KEY}"
-                        PASSWORD_SALT="${PASSWORD_SALT}"
+                        PASSWORD_SALT=${PASSWORD_SALT}
                         JWT_TOKEN_EXPIRATION="${JWT_TOKEN_EXPIRATION}"
                         NODE_ENV="${NODE_ENV}"
                     """
