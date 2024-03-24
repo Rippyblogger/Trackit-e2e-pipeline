@@ -72,7 +72,6 @@ pipeline{
 
                     script{
                         def content=  """\
-                        cat <<EOF > .env
                         MONGO_DB_CONNECTION=${MONGO_DB_CONNECTION}
                         SECRET_KEY=${SECRET_KEY}
                         PASSWORD_SALT=${PASSWORD_SALT}
