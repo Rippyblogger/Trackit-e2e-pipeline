@@ -71,7 +71,8 @@ pipeline{
                     sh 'pwd'
                     sh 'touch .env'
 
-                    def content=  """\
+                    script{
+                        def content=  """\
                         cat <<EOF > .env
                         MONGO_DB_CONNECTION=${MONGO_DB_CONNECTION}
                         SECRET_KEY=${SECRET_KEY}
@@ -83,6 +84,7 @@ pipeline{
                     writeFile(file: '.env', text: content)
 
                     sh 'npm run seed'
+                    }
                 }
             }
         }
