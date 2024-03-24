@@ -46,7 +46,7 @@ pipeline{
                 }
 
                  dir('server'){
-                sh 'npm install && cp .env.EXAMPLE .ENV'
+                sh 'npm install'
                 }
             }
         }
@@ -68,16 +68,19 @@ pipeline{
         stage("Seed database Tests"){
             steps{
                 dir("server"){
+                    sh 'pwd'
                     sh 'touch .env'
-                    sh """
+
+                    def content=  """\
                         cat <<EOF > .env
                         MONGO_DB_CONNECTION=${MONGO_DB_CONNECTION}
                         SECRET_KEY=${SECRET_KEY}
                         PASSWORD_SALT=${PASSWORD_SALT}
                         JWT_TOKEN_EXPIRATION=${JWT_TOKEN_EXPIRATION}
                         NODE_ENV=${NODE_ENV}
-                        EOF
                     """
+
+                    writeFile(file: '.env', text: content)
 
                     sh 'npm run seed'
                 }
@@ -94,8 +97,7 @@ pipeline{
 
         stage("Clean Mongo container"){
             steps{
-                sh 'docker stop mongo'
-                sh 'docker rm mongo'
+                sh 'docker stop mongo && docker rm mongo'
             }
         }
             
