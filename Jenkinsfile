@@ -91,6 +91,7 @@ pipeline{
             steps{
                 sh 'pwd'
                 dir("server"){
+                    sh 'npm install'
                     sh 'npm run test'
                 }
             }
