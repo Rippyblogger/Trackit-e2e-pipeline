@@ -68,7 +68,6 @@ pipeline{
         stage("Seed database Tests"){
             steps{
                 dir("server"){
-                    sh 'pwd'
                     sh 'touch .env'
 
                     script{
@@ -91,6 +90,7 @@ pipeline{
 
         stage("Run Tests"){
             steps{
+                sh 'pwd'
                 dir("server"){
                     sh 'npm run test'
                 }
