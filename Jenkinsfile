@@ -42,12 +42,10 @@ pipeline{
         stage("Install Client and Server dependencies"){
             steps{
                 dir('client'){
-                sh 'rm -rf node_modules'
                 sh 'npm install'
                 }
 
                  dir('server'){
-                sh 'rm -rf node_modules'
                 sh 'npm install'
                 }
             }
@@ -93,6 +91,7 @@ pipeline{
             steps{
                 sh 'pwd'
                 dir("server"){
+                    sh 'npm install jest'
                     sh 'npm run test'
                 }
             }
