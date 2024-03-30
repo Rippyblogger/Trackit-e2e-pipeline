@@ -90,7 +90,7 @@ pipeline{
         stage("Run Tests"){
             steps{
                 dir("server"){
-                    sh 'npm install -D jest && npm run test-jenkins'
+                    sh 'npm install && npm run test-jenkins'
                 }
             }
         }
