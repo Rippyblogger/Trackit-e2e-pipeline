@@ -89,9 +89,8 @@ pipeline{
 
         stage("Run Tests"){
             steps{
-                sh 'pwd'
                 dir("server"){
-                    sh 'npm install -D jest && npm run test'
+                    sh 'npm install -D jest && npm run test-jenkins'
                 }
             }
         }
