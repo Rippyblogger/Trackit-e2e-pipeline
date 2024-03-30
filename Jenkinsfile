@@ -91,9 +91,7 @@ pipeline{
             steps{
                 sh 'pwd'
                 dir("server"){
-                    sh 'pwd'
-                    sh 'npm install jest'
-                    sh 'npm run test'
+                    sh 'npm install -D jest && npm run test'
                 }
             }
         }
